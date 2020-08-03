@@ -18,10 +18,14 @@ class MovieItem extends React.Component {
     super();
 
     this.state = {
-      show: false
+      show: false,
+      like: false
     };
   }
 
+  handleLike = () => {
+    this.setState({ like: !this.state.like });
+  };
   toggleOverview = () => {
     this.setState({ show: !this.state.show });
   };
@@ -38,7 +42,13 @@ class MovieItem extends React.Component {
           <button type="button" onClick={this.toggleOverview}>
             {this.state.show ? "hide" : "show"}
           </button>
-          <button type="button">like</button>
+          <button
+            type="button"
+            onClick={this.handleLike}
+            style={{ background: this.state.like ? "blue" : "white" }}
+          >
+            like
+          </button>
         </div>
         {this.state.show === true ? overview : null}
       </div>
